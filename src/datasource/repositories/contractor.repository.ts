@@ -4,19 +4,21 @@ import { Contractor } from '../models';
 export class ContractorRepository {
     private readonly contractorDB = Contractor;
 
-    public create = async (contractor: IContractor): Promise<IContractor | null> => {
+    public create = async (
+        contractor: IContractor
+    ): Promise<IContractor | null> => {
         let result = await this.contractorDB.create(contractor);
         return result;
     };
     public fetchContractors = async (): Promise<IContractor[] | []> => {
-        let result = await this.contractorDB.find({})
+        let result = await this.contractorDB.find({});
         return result;
     };
 
-    public fetchContractor = async (contractorId: string): Promise<IContractor | null> => {
-        let result = await this.contractorDB
-            .findById({ contractorId })
-            .exec();
+    public fetchContractor = async (
+        contractorId: string
+    ): Promise<IContractor | null> => {
+        let result = await this.contractorDB.findById({ contractorId }).exec();
         return result;
     };
 
@@ -30,8 +32,12 @@ export class ContractorRepository {
         );
         return result;
     };
-    public delete = async (contractorId: string): Promise<IContractor | null> => {
-        let result = await this.contractorDB.findByIdAndDelete({ _id: contractorId });
+    public delete = async (
+        contractorId: string
+    ): Promise<IContractor | null> => {
+        let result = await this.contractorDB.findByIdAndDelete({
+            _id: contractorId,
+        });
         return result;
     };
 

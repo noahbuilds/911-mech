@@ -5,7 +5,7 @@ import { injectable } from 'tsyringe';
 @injectable()
 class ContractorController {
     constructor(private readonly contractorService: ContractorService) {}
-    public async getContractors(req: any, res: Response) {
+    public getContractors = async (req: any, res: Response) => {
         // let users = await User.find({});
         // return res.json({
         //   user: users,
@@ -20,8 +20,8 @@ class ContractorController {
                 err: error.message,
             });
         }
-    }
-    public async getContractorById(req: Request, res: Response) {
+    };
+    public getContractorById = async (req: Request, res: Response) => {
         let id: string = req.params.id;
         try {
             let result = await this.contractorService.getContractorById(id);
@@ -34,7 +34,7 @@ class ContractorController {
                 err: error.message,
             });
         }
-    }
+    };
 }
 
 export { ContractorController };

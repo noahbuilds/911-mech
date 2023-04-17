@@ -10,6 +10,7 @@ export class ClientRepository {
     };
     public fetchClients = async (): Promise<IClient[] | []> => {
         let result = await this.clientDB.find({});
+        // console.log(result)
         return result;
     };
 

@@ -8,7 +8,7 @@ const clientSchema = new mongoose.Schema<IClient>({
   lastName: { type: String, required: true },
   email: { type: String, required: true,unique: true, uppercase: false },
   password: { type: String, required: true },
-  gender: { type: String, enum: Gender, required: true },
+  gender: { type: String, enum: Gender, required: false },
   location: {type: String},
   token: {type: String},
   phoneNumber: {type:String},
