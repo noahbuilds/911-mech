@@ -11,4 +11,4 @@ router.get("/", clientController.getClients);
 router.get("/:id", clientController.getClientById);
 
 
-export { router as contractorRouter };
+export { router as clientRouter };

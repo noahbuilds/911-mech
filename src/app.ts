@@ -3,7 +3,7 @@ import express, { Application, Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { ApiError } from './utilities/apiError';
 import mongoose, { ConnectOptions } from 'mongoose';
-import { contractorRouter, authRouter } from './routes/index';
+import { contractorRouter, authRouter, clientRouter } from './routes/index';
 import { auth } from './middlewares/auth';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -50,6 +50,7 @@ class App {
 
     private initializeControllers(): void {
         this.express.use('/api/v1/contractor', auth, contractorRouter);
+        this.express.use('api/v1/client', clientRouter)
         this.express.use('/api/v1/auth', authRouter);
     }
 
