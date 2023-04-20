@@ -7,18 +7,20 @@ export class ContractorRepository {
     public create = async (
         contractor: IContractor
     ): Promise<IContractor | null> => {
-        let result = await this.contractorDB.create(contractor);
+        const result = await this.contractorDB.create(contractor);
         return result;
     };
     public fetchContractors = async (): Promise<IContractor[] | []> => {
-        let result = await this.contractorDB.find({});
+        const result = await this.contractorDB.find({});
         return result;
     };
 
     public fetchContractor = async (
         contractorId: string
     ): Promise<IContractor | null> => {
-        let result = await this.contractorDB.findById({ contractorId }).exec();
+        const result = await this.contractorDB
+            .findById({ contractorId })
+            .exec();
         return result;
     };
 
@@ -26,7 +28,7 @@ export class ContractorRepository {
         contractorId: string,
         option: any
     ): Promise<IContractor | null> => {
-        let result = await this.contractorDB.findByIdAndUpdate(
+        const result = await this.contractorDB.findByIdAndUpdate(
             { _id: contractorId },
             option
         );
@@ -35,14 +37,14 @@ export class ContractorRepository {
     public delete = async (
         contractorId: string
     ): Promise<IContractor | null> => {
-        let result = await this.contractorDB.findByIdAndDelete({
+        const result = await this.contractorDB.findByIdAndDelete({
             _id: contractorId,
         });
         return result;
     };
 
     public findEmail = async (email: string): Promise<IContractor | null> => {
-        let result = await this.contractorDB.findOne({ email });
+        const result = await this.contractorDB.findOne({ email });
         return result;
     };
 }

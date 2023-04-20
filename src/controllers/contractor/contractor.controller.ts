@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ContractorService } from '../services/contractor.service';
+import { ContractorService } from '../../services/contractor/contractor.service';
 import { injectable } from 'tsyringe';
 
 @injectable()
@@ -12,7 +12,7 @@ class ContractorController {
         // });
 
         try {
-            let result = await this.contractorService.getContractors();
+            const result = await this.contractorService.getContractors();
             return res.json(result);
         } catch (error: any) {
             return res.json({
@@ -22,9 +22,9 @@ class ContractorController {
         }
     };
     public getContractorById = async (req: Request, res: Response) => {
-        let id: string = req.params.id;
+        const id: string = req.params.id;
         try {
-            let result = await this.contractorService.getContractorById(id);
+            const result = await this.contractorService.getContractorById(id);
             res.json({
                 result,
             });

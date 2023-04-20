@@ -1,5 +1,5 @@
 export enum Service {
-    "fuel",
-    "wash",
-    "repair",
-  }
+    'fuel',
+    'wash',
+    'repair',
+}

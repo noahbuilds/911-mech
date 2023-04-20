@@ -13,10 +13,15 @@ export interface IContractor {
     phoneNumber: string;
     createdAt: Date;
     updatedAt: Date;
-    service: string[];
+    service: IService[];
 }
 
 export interface ILogin {
     email: string;
     password: string;
+}
+
+export interface IService {
+    name: string;
+    price: number;
 }

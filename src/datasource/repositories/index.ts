@@ -1,2 +1,2 @@
-export { ContractorRepository } from "./contractor.repository";
-export {ClientRepository} from "./client.repository"
+export { ContractorRepository } from './contractor.repository';
+export { ClientRepository } from './client.repository';
