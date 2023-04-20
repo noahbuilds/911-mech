@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import { EmailService } from '../email.service';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { injectable } from 'tsyringe';
-import { ContractorRepository } from '../../datasource/repositories'
+import { ContractorRepository } from '../../datasource/repositories';
 
 @injectable()
 class ContractorService {
