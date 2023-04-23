@@ -52,6 +52,22 @@ class ContractorController {
             throw new Error(error);
         }
     };
+
+    public updateContractorPhoneNumber = async (
+        req: Request,
+        res: Response
+    ) => {
+        try {
+            const result =
+                await this.contractorService.updateContractorPhoneNumber(
+                    req.params.contractorId,
+                    req.params.phoneNumber
+                );
+            return res.json({ result });
+        } catch (error: any) {
+            throw new Error(error);
+        }
+    };
 }
 
 export { ContractorController };

@@ -55,5 +55,15 @@ class ContractorService {
         });
         return result;
     };
+
+    public updateContractorPhoneNumber = async (
+        contractorId: string,
+        phoneNumber: string
+    ) => {
+        const result = await this.contractorRepo.update(contractorId, {
+            phoneNumber: phoneNumber,
+        });
+        return result;
+    };
 }
 export { ContractorService };

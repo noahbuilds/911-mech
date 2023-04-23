@@ -10,8 +10,12 @@ router.get('/', contractorController.getContractors);
 //get contractorsbyId
 router.get('/:contractorId', contractorController.getContractorById);
 router.patch(
-    '/:contractorId/:status',
+    '/:contractorId/edit/status/:status',
     contractorController.updateAvailablilityStatus
+);
+router.patch(
+    '/:contractorId/edit/phoneNumber/:phoneNumber',
+    contractorController.updateContractorPhoneNumber
 );
 
 export { router as contractorRouter };
