@@ -9,7 +9,7 @@ router.get('/', contractorController.getContractors);
 
 //get contractorsbyId
 router.get('/:contractorId', contractorController.getContractorById);
-router.put(
+router.patch(
     '/:contractorId/:status',
     contractorController.updateAvailablilityStatus
 );
