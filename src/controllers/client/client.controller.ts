@@ -48,9 +48,9 @@ class ClientController {
     };
 
     public getClientById = async (req: Request, res: Response) => {
-        const id: string = req.params.id;
+        const clientId: string = req.params.clientId;
         try {
-            const result = await this.clientService.getClientById(id);
+            const result = await this.clientService.getClientById(clientId);
             res.json({
                 result,
             });
@@ -85,6 +85,18 @@ class ClientController {
             );
             return res.json(result);
         } catch (error) {}
+    };
+
+    public updateClientPhoneNumber = async (req: Request, res: Response) => {
+        try {
+            const result = await this.clientService.updateClientPhoneNumber(
+                req.params.clientId,
+                req.params.phoneNumber
+            );
+            res.json({ result });
+        } catch (error: any) {
+            throw new Error(error);
+        }
     };
 }
 

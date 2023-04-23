@@ -52,5 +52,15 @@ class ClientService {
         );
         return bookStatus;
     };
+
+    public updateClientPhoneNumber = async (
+        clientId: string,
+        phoneNumber: string
+    ) => {
+        const result = await this.clientRepo.update(clientId, {
+            phoneNumber: phoneNumber,
+        });
+        return result;
+    };
 }
 export { ClientService };

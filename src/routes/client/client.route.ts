@@ -9,9 +9,14 @@ router.get('/', clientController.getClients);
 //book contractor for service
 router.get('/service/book/:contractorId', clientController.bookContractor);
 //get clientbyId
-router.get('/:id', clientController.getClientById);
+router.get('/:clientId', clientController.getClientById);
 //request Service
 router.post('/service', clientController.requestService);
 //Client registration
 router.post('/', clientController.registerClient);
+//update client phoneNumber
+router.patch(
+    '/:clientId/:phoneNumber',
+    clientController.updateClientPhoneNumber
+);
 export { router as clientRouter };
