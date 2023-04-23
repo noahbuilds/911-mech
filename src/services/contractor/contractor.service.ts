@@ -46,5 +46,14 @@ class ContractorService {
         });
         return result;
     };
+    public updateAvailablilityStatus = async (
+        contractorId: string,
+        status: boolean
+    ) => {
+        const result = await this.contractorRepo.update(contractorId, {
+            isAvailable: status,
+        });
+        return result;
+    };
 }
 export { ContractorService };

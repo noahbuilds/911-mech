@@ -8,6 +8,10 @@ const contractorController = container.resolve(ContractorController);
 router.get('/', contractorController.getContractors);
 
 //get contractorsbyId
-router.get('/:id', contractorController.getContractorById);
+router.get('/:contractorId', contractorController.getContractorById);
+router.put(
+    '/:contractorId/:status',
+    contractorController.updateAvailablilityStatus
+);
 
 export { router as contractorRouter };

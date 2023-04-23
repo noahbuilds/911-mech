@@ -22,9 +22,11 @@ class ContractorController {
         }
     };
     public getContractorById = async (req: Request, res: Response) => {
-        const id: string = req.params.id;
+        const contractorId: string = req.params.contractorId;
         try {
-            const result = await this.contractorService.getContractorById(id);
+            const result = await this.contractorService.getContractorById(
+                contractorId
+            );
             res.json({
                 result,
             });
@@ -33,6 +35,21 @@ class ContractorController {
                 msg: ' Couldnt get user',
                 err: error.message,
             });
+        }
+    };
+
+    public updateAvailablilityStatus = async (req: Request, res: Response) => {
+        try {
+            const result =
+                await this.contractorService.updateAvailablilityStatus(
+                    req.params.contractorId,
+                    req.params.status as unknown as boolean
+                );
+            return res.json({
+                result,
+            });
+        } catch (error: any) {
+            throw new Error(error)
         }
     };
 }
