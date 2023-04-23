@@ -10,8 +10,13 @@ export class ContractorRepository {
         const result = await this.contractorDB.create(contractor);
         return result;
     };
-    public fetchContractors = async (): Promise<IContractor[] | []> => {
-        const result = await this.contractorDB.find({});
+    public fetchContractors = async (
+        option: any
+    ): Promise<IContractor[] | []> => {
+        // console.log();
+
+        const result = await this.contractorDB.find(option);
+        // console.log(result);
         return result;
     };
 

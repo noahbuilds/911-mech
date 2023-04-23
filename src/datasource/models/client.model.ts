@@ -12,7 +12,7 @@ const clientSchema = new mongoose.Schema<IClient>(
         gender: { type: String, enum: Gender, required: false },
         location: { type: String },
         token: { type: String },
-        phoneNumber: { type: String },
+        phoneNumber: { type: String, required: true },
     },
     {
         timestamps: true,

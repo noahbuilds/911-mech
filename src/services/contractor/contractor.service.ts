@@ -30,11 +30,20 @@ class ContractorService {
     public getContractorById = async (
         contractorId: string
     ): Promise<IContractor | null> => {
-        const result = this.contractorRepo.fetchContractor(contractorId);
+        const result = await this.contractorRepo.fetchContractor(contractorId);
         return result;
     };
-    public getContractors = async (): Promise<IContractor[] | null> => {
-        const result = this.contractorRepo.fetchContractors();
+    public getContractors = async (
+        option: any
+    ): Promise<IContractor[] | null> => {
+        const result = await this.contractorRepo.fetchContractors(option);
+        return result;
+    };
+
+    public bookContractor = async (contractorId: string) => {
+        const result = await this.contractorRepo.update(contractorId, {
+            isAvailable: false,
+        });
         return result;
     };
 }

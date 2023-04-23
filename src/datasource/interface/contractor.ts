@@ -14,6 +14,7 @@ export interface IContractor {
     createdAt: Date;
     updatedAt: Date;
     service: IService[];
+    isAvailable: boolean;
 }
 
 export interface ILogin {

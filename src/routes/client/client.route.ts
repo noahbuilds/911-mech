@@ -4,10 +4,14 @@ import { container } from 'tsyringe';
 const router: Router = Router();
 
 const clientController = container.resolve(ClientController);
-//get users
+//get clients
 router.get('/', clientController.getClients);
-router.post('/', clientController.registerClient);
-//get userbyId
+//book contractor for service
+router.get('/service/book/:contractorId', clientController.bookContractor);
+//get clientbyId
 router.get('/:id', clientController.getClientById);
-
+//request Service
+router.post('/service', clientController.requestService);
+//Client registration
+router.post('/', clientController.registerClient);
 export { router as clientRouter };

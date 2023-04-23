@@ -54,7 +54,7 @@ class App {
     }
 
     private initializeControllers(): void {
-        this.express.use('/api/v1/contractor', auth, contractorRouter);
+        this.express.use('/api/v1/contractor', contractorRouter);
         this.express.use('/api/v1/client', clientRouter);
         this.express.use('/api/v1/client-auth', clientAuthRouter);
         this.express.use('/api/v1/contractor-auth', contractorAuthRouter);

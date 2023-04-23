@@ -12,8 +12,8 @@ class ContractorController {
         // });
 
         try {
-            const result = await this.contractorService.getContractors();
-            return res.json(result);
+            const result = await this.contractorService.getContractors({});
+            return res.json({ result: result });
         } catch (error: any) {
             return res.json({
                 msg: ' Couldnt get users',

@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { Gender } from '../enums/gender';
 import { IContractor } from '../interface/contractor';
-import bcrypt from 'bcrypt';
-import { Service } from '../enums/service';
+// import bcrypt from 'bcrypt';
+// import { Service } from '../enums/service';
 
 const contractorSchema = new mongoose.Schema<IContractor>(
     {
@@ -13,9 +13,10 @@ const contractorSchema = new mongoose.Schema<IContractor>(
         gender: { type: String, enum: Gender, required: true },
         location: { type: String },
         token: { type: String },
-        phoneNumber: { type: String },
+        phoneNumber: { type: String, required: true },
         service: { type: [{ name: String, price: Number }], required: true },
-        rating: { type: Number },
+        rating: { type: Number, default: 0 },
+        isAvailable: { type: Boolean, default: true },
     },
     {
         timestamps: true,

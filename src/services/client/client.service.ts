@@ -4,12 +4,14 @@ import { EmailService } from '../email.service';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { injectable } from 'tsyringe';
 import { ClientRepository } from '../../datasource/repositories';
+import { ContractorService } from '../index';
 
 @injectable()
 class ClientService {
     constructor(
         private readonly emailService: EmailService,
-        private readonly clientRepo: ClientRepository
+        private readonly clientRepo: ClientRepository,
+        private readonly contractorService: ContractorService
     ) {}
     public createClient = async (reqBody: IClient) => {
         const { firstName, lastName, email, password, gender, location } =
@@ -38,9 +40,17 @@ class ClientService {
         return result;
     };
 
-    // public async addUserDog(userId: string, dogId: string) {
-    //   let result = this.clientRepo.update(userId, { $push: { dogs: dogId } });
-    //   return result;
-    // }
+    public requestService = async (option: any) => {
+        const availableContractors =
+            await this.contractorService.getContractors(option);
+        return availableContractors;
+    };
+
+    public bookService = async (contractorId: string) => {
+        const bookStatus = await this.contractorService.bookContractor(
+            contractorId
+        );
+        return bookStatus;
+    };
 }
 export { ClientService };

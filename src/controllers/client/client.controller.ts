@@ -1,12 +1,15 @@
 import { Request, Response } from 'express';
-import { ClientService } from '../../services';
+import { ClientService, ContractorService } from '../../services';
 import { injectable } from 'tsyringe';
 import { IClient } from '../../datasource/interface/client';
 import { ApiError } from '../../utilities/apiError';
 
 @injectable()
 class ClientController {
-    constructor(private readonly clientService: ClientService) {}
+    constructor(
+        private readonly clientService: ClientService,
+        private readonly contractorService: ContractorService
+    ) {}
 
     public registerClient = async (req: Request, res: Response) => {
         try {
@@ -59,12 +62,28 @@ class ClientController {
         }
     };
 
-    public getContractorInClientLocation = async (
-        location: string,
-        service: string
-    ) => {
+    public requestService = async (req: Request, res: Response) => {
         try {
-            let result;
+            const location: string = req.body.location;
+            const service: string = req.body.service;
+            const option = {
+                'service.name': service,
+                location: location,
+                isAvailable: true,
+            };
+            const result = await this.clientService.requestService(option);
+            return res.json(result);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    public bookContractor = async (req: Request, res: Response) => {
+        try {
+            const result = await this.clientService.bookService(
+                req.params.contractorId
+            );
+            return res.json(result);
         } catch (error) {}
     };
 }
